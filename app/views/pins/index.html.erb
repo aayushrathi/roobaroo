@@ -23,6 +23,8 @@
           <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
           <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+        <td><%= link_to "upvote", like_pin_path(pin), method: :put %></td>
+        <td><%= pin.score %></td>
       </tr>
     <% end %>
   </tbody>

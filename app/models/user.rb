@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :pins
+  has_many :votes, dependent: :destroy
+  has_many :upvoted_pins, through: :votes, source: :pin
 
   def self.from_omniauth(auth)
 	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
